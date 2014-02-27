@@ -9,11 +9,9 @@
 
 # first the java program needs to be installed before anything
 
-include_recipe "df_java::default"
-
-
 # next we need to install the software properly for ubuntu type systems.
-
+case node['platform_family']
+when "rhel"
 package "jenkins" do 
 	source node['jenkins']['url']
 	action :install 
@@ -21,4 +19,16 @@ end
 
 service "jenkins" do 
 	action [:enable, :start]
+end
+when "debian"
+	execute "update" do 
+		command "sudo apt-get update"
+	end
+	package "jenkins" do 
+		source node['jenkins']['url']
+		action :install
+	end
+	service "jenkins" do 
+		action [:enable, :start]
+	end
 end
