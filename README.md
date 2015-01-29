@@ -2,8 +2,11 @@
 this cookbook was written for the sole purpose of installing jenkins as a continuous integration tool onto a dedicated box and make sure it is running
 # Requirements
 this requires Java to be installed prior to the installation of jenkins and to have a working internet connection for the system. I think there will be a lot more to this one before you know it.
-# Usage
 
+* We primarily have this setup locally with RPM's So it would need to be modified in it's current state
+'java' cookbook
+# Usage
+for running CI tests on machines in hopes of getting things actually working.
 # Attributes
 
 * default['jenkins']['url']: the location of the RPM. This is intentionally left open for the source so as to allow either a URL address for download or a local file installation (which is the preferred method.)
